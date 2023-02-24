@@ -11,8 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import contactsReducer from './contacts/contacts-slice';
-import filterReducer from './filter/filter-slice';
+import { contactsReducer } from './contacts/contacts-slice';
+import { filterReducer } from './filter/filter-slice';
 
 const persistConfig = {
   key: 'contacts',

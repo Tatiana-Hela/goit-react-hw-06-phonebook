@@ -24,7 +24,7 @@ const ContactItem = ({ id, name, number }) => {
 export default ContactItem;
 
 ContactItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
 };

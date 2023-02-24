@@ -11,9 +11,8 @@ const ContactForm = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-
+  const handleChange = e => {
+    const { name, value } = e.target;
     switch (name) {
       case 'name':
         setName(value);
@@ -26,11 +25,11 @@ const ContactForm = () => {
       default:
         throw new Error("There isn't such option");
     }
-    console.log(value);
   };
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
+
     const isNameAdded = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -44,10 +43,9 @@ const ContactForm = () => {
       return;
     }
     dispatch(addNewContact(name, number));
-
-    console.log(`Name: ${name}, Number: ${number}`);
+    setName('');
+    setNumber('');
   };
-  console.log(contacts);
   return (
     <form onSubmit={handleSubmit} className={css.form}>
       <label className={css.label}>

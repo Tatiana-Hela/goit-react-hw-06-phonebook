@@ -11,16 +11,17 @@ import Section from 'components/Section/Section';
 const App = () => {
   const contacts = useSelector(getContacts);
 
+  const isContacts = Boolean(contacts.length);
   return (
     <div className={css.container}>
-      <Section title={'Phonebook'}>
+      <Section title="Phonebook">
         <ContactForm />
       </Section>
-      <Section title={'Contacts'}>
-        {contacts.length >= 1 && <Filter />}
-        {contacts.length > 0 ? (
-          <ContactList />
-        ) : (
+      <Section title="Contacts">
+        {isContacts && <Filter />}
+        {isContacts && <ContactList />}
+
+        {!isContacts && (
           <p className={css.text}>
             Your phonebook is empty. Please add contact.
           </p>

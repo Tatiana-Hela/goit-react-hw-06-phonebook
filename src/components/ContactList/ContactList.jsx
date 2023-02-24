@@ -11,26 +11,26 @@ const ContactList = () => {
   const filter = useSelector(getFilter);
 
   const getVisibleContacts = () => {
-    if (!filter) {
-      return contacts;
-    }
     const normalizeFilter = filter.trim().toLowerCase();
 
-    return contacts.filter(contact =>
+    console.log(contacts);
+
+    const result = contacts.filter(contact =>
       contact.name.trim().toLowerCase().includes(normalizeFilter)
     );
+    return result;
   };
 
   const visibleContacts = getVisibleContacts();
-
+  
   return (
     <>
       {visibleContacts.length === 0 && (
-        <p className={css.text}>Your phonebook is empty. Please add contact.</p>
+        <p className={css.text}>There is no such contact</p>
       )}
       <ul className={css.list}>
         {visibleContacts.map(({ id, name, number }) => {
-          return <ContactItem id={id} name={name} number={number} />;
+          return <ContactItem key={id} id={id} name={name} number={number} />;
         })}
       </ul>
     </>
